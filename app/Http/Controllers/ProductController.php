@@ -35,10 +35,10 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'sometimes|required|string',
+            'name' => 'sometimes|string',
             'description' => 'nullable|string',
-            'category_id' => 'sometimes|required|exists:categories,id',
-            'price' => 'sometimes|required|numeric',
+            'category_id' => 'sometimes|exists:categories,id',
+            'price' => 'sometimes|numeric',
         ]);
 
         $product = Product::findOrFail($id);
